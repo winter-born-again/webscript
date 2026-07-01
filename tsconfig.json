@@ -1,0 +1,15 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    // "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    // 如果项目中有 JS 文件，可以开启以下选项实现渐进式迁移
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/script/data.js"],
+  "exclude": ["node_modules", "dist"]
+}
