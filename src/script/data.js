@@ -120,7 +120,7 @@ print(a)#[12,2,3,4]`], "function")],
     dict: [
       buildViewBlocks("创建（create）", ["<p class='bold'>字典的形式遵从变量={键：值}", "这其中键必需是不可变的序列，不可以是可变类型，并且键是不可重复"], [null, `d={"1":"first"}`], "create"),
       buildViewBlocks(
-        '查询（query）',
+        '读取（read）',
         [
           "d[key]:",
           "<p class='rem1'>如果需要直接访问其中某些特定的键盘",
@@ -220,6 +220,7 @@ print(d)      # {}`
           "其次是它可以很明显的表示映射关系这对代码的可读性是很好的",
           "我们可以做一个对比如果我们使用字典的方式来统计字符串是这样的",
           '之所以选择字典来存储就是因为字典独特的键值对特性。可以省去我们手动建立字符和数量的关系。',
+          "你也可以使用get方法来优化这个过程",
           "如果不使用字典自带的映射关系而去手动建立映射，代码如下："],
         [null, null, null, `text="happy everyday bro"
 d=dict()
@@ -228,7 +229,11 @@ for i in text:
         d[i]=1
     else:
         d[i]+=1
-print(d)`, null,`a="adssadsasdasda"
+print(d)`,null,
+`d=dict()
+for i in text:
+    d[i]=d.get(i,0)+1
+print(d)`,`a="adssadsasdasda"
 key=[]
 values=[]
 for value in a:
@@ -241,7 +246,87 @@ for i in range(len(key)):
            count+=1
     values.append(count)
 print(dict(zip(key,values)))`])
+    ],
+    set:[
+    buildViewBlocks("创建（create）",["这里明确的声明,集合类型不可以使用{}来创建空集合!!!"],[`S={1,2,3,4,5}#变量={内容}`]),
+    buildViewBlocks("读取（read）",["set类型没有特殊的读取方式,只能通过for循环读取"],[`s = {1, 2, 3}
+for item in s:
+  print(item)`]),
+    buildViewBlocks("修改（update）",["可以使用add来添加单个元素","如果需要添加多个可以使用update"],[`s = {1, 2, 3}
+s.add(4)          # {1, 2, 3, 4} `,`s = {1, 2, 3}
+s.update([5, 6, 7])# {1, 2, 3, 4, 5, 6, 7}
+s = {1, 2, 3}
+s.update({8, 9}, [10])#{1, 2, 3, 8, 9, 10}  `]),
+    buildViewBlocks("删除（delete）",["remove()：删除指定元素，不存在则报错KeyError"," discard()：删除指定元素，不存在也不报错","pop()：随机删除并返回一个元素","clear()：清空集合","del：删除整个集合"],
+    [`s.remove(3)      # {1, 2, 4, 5}
+# s.remove(10)   # KeyError: 10`,`s.discard(4)     # {1, 2, 5}
+s.discard(10)    # 不会报错`,`removed = s.pop()  # 返回被删除的元素`,`s.clear()          # set()`,`del s #无法访问这个变量,因为它已经del销毁`]),
+buildViewBlocks("集合运算",
+    ["并集", "交集", "差集", "对称差集", "子集判断", "超集判断", "是否不相交", "原地修改"],
+    [
+        `A = {1, 2, 3}
+B = {3, 4, 5}
+print(A | B)           # 运算符
+print(A.union(B))      # 方法调用
+# 输出：{1, 2, 3, 4, 5}`,
+
+        `A = {1, 2, 3}
+B = {3, 4, 5}
+print(A & B)                # 运算符
+print(A.intersection(B))    # 方法调用
+# 输出：{3}`,
+
+        `A = {1, 2, 3}
+B = {3, 4, 5}
+print(A - B)           # A中有B中没有的
+print(A.difference(B))
+# 输出：{1, 2}
+
+print(B - A)           # B中有A中没有的
+# 输出：{4, 5}`,
+
+        `A = {1, 2, 3}
+B = {3, 4, 5}
+print(A ^ B)                    # 运算符
+print(A.symmetric_difference(B)) # 方法调用
+# 输出：{1, 2, 4, 5}`,
+
+        `A = {1, 2, 3}
+B = {1, 2, 3, 4, 5}
+C = {1, 2, 3}
+
+print(A.issubset(B))   # True
+print(A <= B)          # True (运算符)
+print(C.issubset(A))   # True
+print(A < C)           # False (真子集)`,
+
+        `A = {1, 2, 3, 4, 5}
+B = {1, 2, 3}
+
+print(A.issuperset(B))  # True
+print(A >= B)           # True (运算符)
+print(A > B)            # True (真超集)`,
+
+        `A = {1, 2, 3}
+B = {3, 4, 5}
+C = {4, 5, 6}
+
+print(A.isdisjoint(B))  # False (有共同元素3)
+print(A.isdisjoint(C))  # True (无共同元素)`,
+
+        `# 原地修改（会改变原集合）
+A = {1, 2, 3}
+B = {3, 4, 5}
+
+A.update(B)      # 并集，A变为{1,2,3,4,5}
+A.intersection_update(B)  # 交集
+A.difference_update(B)    # 差集
+A.symmetric_difference_update(B)  # 对称差集
+# 或使用：|= , &= , -= , ^=`
     ]
+)
+  ],
+  string:[]
   },
   javascript: {
     array: [],

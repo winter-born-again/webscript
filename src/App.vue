@@ -7,12 +7,12 @@
 <style>
 body {
   background-color: rgb(22, 22, 22);
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
   min-width: 320px;
 }
 .normal {
-  font-weight: normal!important;
+  font-weight: normal !important;
 }
 .bold {
   font-weight: bold;
@@ -29,11 +29,27 @@ body {
 .rem2 {
   text-indent: 2rem;
 }
-h2,h3,h4,h5,p{margin: 0;}
-h2{padding:20px 0 5px 0;font-size: 35px;}
-h3{margin: 10px 0 ;font-size: 20px;}
-h4{margin: 8px 0;}
-p{margin: 5px 0 ;}
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+h2 {
+  padding: 10px 0 5px 0;
+  font-size: 35px;
+}
+h3 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+h4 {
+  margin: 8px 0;
+}
+p {
+  margin: 5px 0;
+}
 * {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;

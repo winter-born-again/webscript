@@ -1,7 +1,7 @@
 <template>
   <appSider>
-    <h2 class="st">字典(dict)</h2>
-    <h3 class="kt rem1">当你需要使用有关联的数据时，你可以尝试使用字典</h3>
+    <h2 class="st">字符串(str)</h2>
+    <h3 class="kt rem1">在python中文本的存储方式</h3>
     <div style="margin-bottom: 50px" class="kt" v-for="(value, index) in result" :key="index">
       <h3>
         <component :is="value.title"></component>

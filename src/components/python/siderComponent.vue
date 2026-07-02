@@ -15,7 +15,9 @@
             </el-icon>
             <span>变量</span>
           </template>
-          <el-menu-item index="/python/var_page" @click="gotopath(`/python/varPage`)">命名规则</el-menu-item>
+          <el-menu-item index="/python/var_page" @click="gotopath(`/python/varPage`)"
+            >命名规则</el-menu-item
+          >
         </el-sub-menu>
         <el-sub-menu index="3">
           <template #title>
@@ -25,9 +27,15 @@
 
           <el-sub-menu index="3-1">
             <template #title><span>可变类型</span></template>
-            <el-menu-item index="/python/list" @click="gotopath(`/python/list`)">列表(list)</el-menu-item>
-            <el-menu-item index="/python/dict"  @click="gotopath(`/python/dict`)">字典(dict)</el-menu-item>
-            <el-menu-item index="3-1-3">集合(set)</el-menu-item>
+            <el-menu-item index="/python/list" @click="gotopath(`/python/list`)"
+              >列表(list)</el-menu-item
+            >
+            <el-menu-item index="/python/dict" @click="gotopath(`/python/dict`)"
+              >字典(dict)</el-menu-item
+            >
+            <el-menu-item index="/python/set" @click="gotopath(`/python/set`)"
+              >集合(set)</el-menu-item
+            >
           </el-sub-menu>
 
           <el-sub-menu index="3-2">
@@ -38,8 +46,8 @@
             <el-menu-item index="3-2-4">布尔类型(boolean)</el-menu-item>
           </el-sub-menu>
 
-         <el-menu-item>数据变形</el-menu-item>
-           <el-menu-item>运算符</el-menu-item>
+          <el-menu-item>数据变形</el-menu-item>
+          <el-menu-item>运算符</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="4">
           <template #title>
@@ -85,10 +93,12 @@
         </el-sub-menu>
       </el-menu>
     </el-col>
-    <el-col class="media"
-    :xs="{ span: 20, offset: 4 }"
-    :sm="{ span: 21, offset: 2 }"
-    :md="{ span: 21, offset: 2 }">
+    <el-col
+      class="media"
+      :xs="{ span: 20, offset: 4 }"
+      :sm="{ span: 21, offset: 2 }"
+      :md="{ span: 21, offset: 2 }"
+    >
       <slot></slot>
     </el-col>
   </el-row>
@@ -115,7 +125,7 @@
 }
 
 .el-menu-vertical-demo {
-  margin-top: 10px;
+  margin-top: 20px;
   height: 100vh;
   position: fixed;
   left: 0;
@@ -156,11 +166,11 @@
   color: #fff !important;
 }
 @media (min-width: 500px) and (max-width: 767px) {
-  .media{
+  .media {
     margin-left: 12%;
   }
 }
-.begin>div:nth-child(2) {
+.begin > div:nth-child(2) {
   margin-top: 30px;
   padding: 1em;
   color: #b0b4bd;

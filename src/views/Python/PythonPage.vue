@@ -23,12 +23,12 @@
           在今天我们使用python的理由很多,比如
           <el-button type="info" @click="showPopup(1)">快速原型</el-button>
           <popUp :data="popupData[1]" :ref="(el) => (popupRefs[1] = el)"></popUp>
-          ,第三方库优秀,各方面的应用也很多,最为突出的是一下三个方向
+          ,第三方库优秀,各方面的应用也很多,最为突出的是以下三个方向
         </div>
         <ul>
           <li v-for="index in [2, 3, 4, 5]" :key="index">
             <el-button type="info" @click="showPopup(index)">
-              <component :is="popupData[index].title "></component>
+              <component :is="popupData[index].title"></component>
             </el-button>
             <popUp :data="popupData[index]" :ref="(el) => (popupRefs[index] = el)" />
           </li>
@@ -62,7 +62,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 13px;
+  padding-top: 20px;
 }
 
 .el-button {
@@ -83,8 +83,8 @@
   font-style: italic;
 }
 
-h2+*,
-div>p {
+h2 + *,
+div > p {
   text-indent: 2rem;
 }
 /* .color{
@@ -98,16 +98,16 @@ import { buildViewBlocks } from '@/script/tool'
 import { useRouter } from 'vue-router'
 const currentLanguage = ref('Python')
 provide('language', currentLanguage)
-const router =useRouter()
+const router = useRouter()
 const selectvalue = (command) => {
   currentLanguage.value = command
   router.push(`/${command}`)
   console.log('当前语言:', command)
 }
-const goStudy =()=>{
+const goStudy = () => {
   router.push({
-    name:"thinkStudy",
-    query:{id:"python"}
+    name: 'thinkStudy',
+    query: { id: 'python' },
   })
 }
 const popupData = [
@@ -232,5 +232,4 @@ const showPopup = (index) => {
     popupRefs.value[index].show()
   }
 }
-
 </script>

@@ -2,7 +2,7 @@
   <appSider>
     <h2 class="st">列表(list)</h2>
       <h3 class="kt rem1">当你需要使用有序的，可修改的数据类型时你可以考虑列表</h3>
-    <div style="padding-left: 10px; margin-bottom: 50px" class="kt" v-for="(value, index) in result" :key="index">
+    <div style=" margin-bottom: 50px" class="kt" v-for="(value, index) in result" :key="index">
       <h3 class="normal" align="center">
         <div v-if="[0, 3].includes(index)">
           <el-button type="info" @click="showPopup(index)">

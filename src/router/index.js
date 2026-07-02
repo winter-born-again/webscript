@@ -26,6 +26,10 @@ const router = createRouter({
           path: 'dict',
           name: 'dict',
           component: () => import('@/views/Python/dataType/dictType.vue'),
+        },{
+          path: 'set',
+          name: 'set',
+          component: () => import('@/views/Python/dataType/setType.vue'),
         },
         {
           path: 'process_control',

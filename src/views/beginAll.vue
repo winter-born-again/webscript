@@ -35,6 +35,7 @@
   text-align: center;
   line-height: 40px;
   position: fixed;
+padding-top: 20px;
   top: 0;
   left: 0;
   z-index: 9999;
