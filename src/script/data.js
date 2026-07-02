@@ -326,7 +326,130 @@ A.symmetric_difference_update(B)  # 对称差集
     ]
 )
   ],
-  string:[]
+  string: [
+    buildViewBlocks("创建（create）",
+        ["字符串可以使用单引号、双引号、三引号创建"],
+        [`s1 = 'hello'         # 单引号
+s2 = "world"         # 双引号
+s3 = '''多行
+字符串'''            # 三引号
+s4 = str(123)        # 类型转换：'123'`]
+    ),
+
+    buildViewBlocks("读取（read）",
+        ["字符串支持索引访问和切片"],
+        [`s = "Hello World"
+print(s[0])          # H (索引访问)
+print(s[-1])         # d (负索引)
+print(s[0:5])        # Hello (切片)
+print(s[::2])        # HloWrd (步长)`,
+        `# 字符串遍历
+for char in s:
+    print(char)      # 逐个字符输出`]
+    ),
+
+    buildViewBlocks("修改（update）",
+        ["<p class='rem1'>字符串是不可变类型！所有修改都是创建新字符串，原字符串不变</p>"],
+        [`s = "hello"
+s2 = s.upper()       # "HELLO" (原s不变)
+s3 = s.replace('h', 'H')  # "Hello"
+s4 = s + " world"    # "hello world"
+s5 = s * 3           # "hellohellohello"
+# 注意：不能 s[0] = 'H' (会报错！)`],
+        "update"
+    ),
+
+    buildViewBlocks("删除（delete）",
+        ["字符串元素不能单独删除，但可以删除整个字符串变量"],
+        [`s = "Hello World"
+# 不能删除单个字符
+# del s[0]  # 会报错
+
+del s  # 删除整个字符串变量
+# print(s)  # NameError: name 's' is not defined`],
+        "delete"
+    ),
+
+    buildViewBlocks("字符串方法",
+        ["大小写转换", "检查大小写", "查找", "替换", "检查开头/结尾", "分割", "连接", "去除空白"],
+        [
+            `# 大小写转换
+text = "hello World"
+print(text.upper())        # HELLO WORLD (全大写)
+print(text.lower())        # hello world (全小写)
+print(text.capitalize())   # Hello world (首字母大写)
+print(text.title())        # Hello World (每个单词首字母大写)
+print(text.swapcase())     # HELLO wORLD (大小写互换)`,
+
+            `# 检查大小写
+print("HELLO".isupper())   # True
+print("hello".islower())   # True
+print("Hello World".istitle())  # True
+print("123".isdigit())     # True (是否全数字)
+print("abc".isalpha())     # True (是否全字母)
+print("abc123".isalnum())  # True (是否字母数字)`,
+
+            `# 查找
+text = "hello world, welcome to the world of Python"
+print(text.find("world"))     # 6 (返回索引，找不到返回-1)
+print(text.index("world"))    # 6 (返回索引，找不到报错)
+print(text.rfind("world"))    # 21 (从右边开始找)
+print(text.count("world"))    # 2 (出现次数)
+print("world" in text)        # True (成员运算符)`,
+
+            `# 替换
+text = "hello world, welcome to the world of Python"
+print(text.replace("world", "Earth"))  # hello Earth, welcome to the Earth of Python
+print(text.replace("world", "Earth", 1))  # 只替换第一个`,
+
+            `# 检查开头和结尾
+text = "hello world, welcome to the world of Python"
+print(text.startswith("hello"))  # True
+print(text.endswith("Python"))   # True
+print(text.startswith("world", 6))  # 从索引6开始检查`,
+
+            `# 分割（split）
+word = "a b c d e f g"
+print(word.split())       # ['a', 'b', 'c', 'd', 'e', 'f', 'g'] (默认空格)
+text = "a,b,c,d,e"
+print(text.split(','))    # ['a', 'b', 'c', 'd', 'e'] (指定分割符)
+print(text.split(',', 2)) # ['a', 'b', 'c,d,e'] (限制分割次数)
+# 分割成三部分
+print("a:b:c".split(':', 1))  # ['a', 'b:c']`,
+
+            `# 连接（join）
+words = ['Hello', 'World', 'Python']
+print(' '.join(words))    # Hello World Python
+print('-'.join(words))    # Hello-World-Python
+print(''.join(words))     # HelloWorldPython`,
+
+            `# 去除空白
+text = "  hello world  "
+print(text.strip())       # "hello world" (去除两端)
+print(text.lstrip())      # "hello world  " (去除左端)
+print(text.rstrip())      # "  hello world" (去除右端)
+text2 = "---hello---"
+print(text2.strip('-'))   # "hello" (去除指定字符)`
+        ]
+    ),
+
+    buildViewBlocks("字符串格式化",
+        ["三种格式化方式：%格式化、format()、f-string","1. % 格式化（旧式）",'2. format() 方法（推荐）',"3. f-string（Python 3.6+，最推荐）"],
+        [null,
+`name = "Alice"
+age = 25
+print("My name is %s, I'm %d years old" % (name, age))
+# My name is Alice, I'm 25 years old`,
+`print("My name is {}, I'm {} years old".format(name, age))
+print("My name is {1}, I'm {0} years old".format(age, name))
+print("My name is {name}, I'm {age} years old".format(name=name, age=age))`,
+            `print(f"My name is {name}, I'm {age} years old")
+print(f"我叫{name}，今年{age}岁")
+print(f"3 + 5 = {3 + 5}")  # 可以执行表达式
+print(f"{name.upper()}")   # ALICE (可以调用方法)`
+        ]
+    )
+]
   },
   javascript: {
     array: [],

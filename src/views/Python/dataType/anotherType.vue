@@ -3,7 +3,7 @@
     <h2 class="st">字符串(str)</h2>
     <h3 class="kt rem1">在python中文本的存储方式</h3>
     <div style="margin-bottom: 50px" class="kt" v-for="(value, index) in result" :key="index">
-      <h3>
+      <h3 class="normal" align="center">
         <component :is="value.title"></component>
       </h3>
 
@@ -18,5 +18,5 @@
 <script setup>
 import { knowledgeData } from '@/script/data'
 
-const result = knowledgeData.python.dict
+const result = knowledgeData.python.string
 </script>

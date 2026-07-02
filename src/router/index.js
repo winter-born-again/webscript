@@ -9,7 +9,7 @@ const router = createRouter({
       component: () => import('@/views/beginAll.vue'),
     },
     {
-      path: '/Python',
+      path: '/python',
       name: 'Python',
       component: () => import('@/views/Python/PythonPage.vue'),
       children: [
@@ -30,6 +30,14 @@ const router = createRouter({
           path: 'set',
           name: 'set',
           component: () => import('@/views/Python/dataType/setType.vue'),
+        },{
+          path: 'str',
+          name: 'str',
+          component: () => import('@/views/Python/dataType/strType.vue'),
+        },{
+          path: 'another',
+          name: 'another',
+          component: () => import('@/views/Python/dataType/anotherType.vue'),
         },
         {
           path: 'process_control',

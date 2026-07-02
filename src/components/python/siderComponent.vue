@@ -15,9 +15,7 @@
             </el-icon>
             <span>变量</span>
           </template>
-          <el-menu-item index="/python/var_page" @click="gotopath(`/python/varPage`)"
-            >命名规则</el-menu-item
-          >
+          <el-menu-item index="/python/var_page" @click="gotopath(`/python/varPage`)">命名规则</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="3">
           <template #title>
@@ -27,23 +25,15 @@
 
           <el-sub-menu index="3-1">
             <template #title><span>可变类型</span></template>
-            <el-menu-item index="/python/list" @click="gotopath(`/python/list`)"
-              >列表(list)</el-menu-item
-            >
-            <el-menu-item index="/python/dict" @click="gotopath(`/python/dict`)"
-              >字典(dict)</el-menu-item
-            >
-            <el-menu-item index="/python/set" @click="gotopath(`/python/set`)"
-              >集合(set)</el-menu-item
-            >
+            <el-menu-item index="/python/list" @click="gotopath(`/python/list`)">列表(list)</el-menu-item>
+            <el-menu-item index="/python/dict" @click="gotopath(`/python/dict`)">字典(dict)</el-menu-item>
+            <el-menu-item index="/python/set" @click="gotopath(`/python/set`)">集合(set)</el-menu-item>
           </el-sub-menu>
 
           <el-sub-menu index="3-2">
             <template #title><span>不可变类型</span></template>
-            <el-menu-item index="3-2-1">字符串(string)</el-menu-item>
-            <el-menu-item index="3-2-2">元组(tuple)</el-menu-item>
-            <el-menu-item index="3-2-3">浮点型(float)</el-menu-item>
-            <el-menu-item index="3-2-4">布尔类型(boolean)</el-menu-item>
+            <el-menu-item index="/python/str" @click="gotopath(`/python/str`)">字符串(string)</el-menu-item>
+            <el-menu-item index="3-2-2">其他类型</el-menu-item>
           </el-sub-menu>
 
           <el-menu-item>数据变形</el-menu-item>
@@ -57,12 +47,7 @@
             <span>流程控制</span>
           </template>
           <el-menu-item index="4-1" class="tobig">条件判断</el-menu-item>
-          <el-sub-menu index="4-2">
-            <template #title><span>循环语句</span></template>
-            <el-menu-item index="4-2-1">for循环</el-menu-item>
-            <el-menu-item index="4-2-2">while循环</el-menu-item>
-            <el-menu-item index="4-2-3">循环关键字</el-menu-item>
-          </el-sub-menu>
+          <el-menu-item index="4-2" class="tobig">循环语句</el-menu-item>
           <el-menu-item index="4-3" class="tobig">异常处理</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="5">
@@ -72,8 +57,7 @@
             </el-icon>
             <span>面向对象</span>
           </template>
-          <el-menu-item index="5-1" class="tobig">函数</el-menu-item>
-          <el-menu-item index="5-2" class="tobig">类</el-menu-item>
+          <el-menu-item index="5-1" class="tobig">函数和类</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="6">
           <template #title>
@@ -82,23 +66,11 @@
             </el-icon>
             <span>算法</span>
           </template>
-          <el-sub-menu index="6-1">
-            <template #title><span>排序算法</span></template>
-            <el-menu-item index="6-1-1">冒泡排序</el-menu-item>
-            <el-menu-item index="6-1-2">选择排序</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="6-2-1">递推</el-menu-item>
-          <el-menu-item index="6-2-2">递归</el-menu-item>
-          <el-menu-item index="6-2-3">二分查找</el-menu-item>
+          <el-menu-item>基础算法</el-menu-item>
         </el-sub-menu>
       </el-menu>
     </el-col>
-    <el-col
-      class="media"
-      :xs="{ span: 20, offset: 4 }"
-      :sm="{ span: 21, offset: 2 }"
-      :md="{ span: 21, offset: 2 }"
-    >
+    <el-col class="media" :xs="{ span: 20, offset: 4 }" :sm="{ span: 21, offset: 2 }" :md="{ span: 21, offset: 2 }">
       <slot></slot>
     </el-col>
   </el-row>
@@ -165,12 +137,14 @@
   background-color: rgb(67, 71, 78) !important;
   color: #fff !important;
 }
+
 @media (min-width: 500px) and (max-width: 767px) {
   .media {
     margin-left: 12%;
   }
 }
-.begin > div:nth-child(2) {
+
+.begin>div:nth-child(2) {
   margin-top: 30px;
   padding: 1em;
   color: #b0b4bd;
