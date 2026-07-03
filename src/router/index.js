@@ -38,6 +38,10 @@ const router = createRouter({
           path: 'another',
           name: 'another',
           component: () => import('@/views/Python/dataType/anotherType.vue'),
+        },{
+          path: 'typeConvresion',
+          name: 'typeConvresion',
+          component: () => import("@/views/Python/dataType/typeConversion.vue"),
         },
         {
           path: 'process_control',

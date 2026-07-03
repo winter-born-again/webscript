@@ -10,6 +10,7 @@ import router from './router'
 import sider from '@/components/python/siderComponent.vue'
 import popup from '@/components/windowComponent.vue'
 import blockcode from '@/components/codeComponent.vue'
+import blockview from "@/components/blockModel.vue"
 const app = createApp(App)
 
 app.use(createPinia())
@@ -19,4 +20,5 @@ app.use(hljsVuePlugin)
 app.component('appSider', sider)
 app.component('popUp', popup)
 app.component('blockCode', blockcode)
+app.component("blockView",blockview)
 app.mount('#app')

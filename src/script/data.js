@@ -229,11 +229,11 @@ for i in text:
         d[i]=1
     else:
         d[i]+=1
-print(d)`,null,
-`d=dict()
+print(d)`, null,
+          `d=dict()
 for i in text:
     d[i]=d.get(i,0)+1
-print(d)`,`a="adssadsasdasda"
+print(d)`, `a="adssadsasdasda"
 key=[]
 values=[]
 for value in a:
@@ -247,36 +247,36 @@ for i in range(len(key)):
     values.append(count)
 print(dict(zip(key,values)))`])
     ],
-    set:[
-    buildViewBlocks("创建（create）",["这里明确的声明,集合类型不可以使用{}来创建空集合!!!"],[`S={1,2,3,4,5}#变量={内容}`]),
-    buildViewBlocks("读取（read）",["set类型没有特殊的读取方式,只能通过for循环读取"],[`s = {1, 2, 3}
+    set: [
+      buildViewBlocks("创建（create）", ["这里明确的声明,集合类型不可以使用{}来创建空集合!!!"], [`S={1,2,3,4,5}#变量={内容}`]),
+      buildViewBlocks("读取（read）", ["set类型没有特殊的读取方式,只能通过for循环读取"], [`s = {1, 2, 3}
 for item in s:
   print(item)`]),
-    buildViewBlocks("修改（update）",["可以使用add来添加单个元素","如果需要添加多个可以使用update"],[`s = {1, 2, 3}
-s.add(4)          # {1, 2, 3, 4} `,`s = {1, 2, 3}
+      buildViewBlocks("修改（update）", ["可以使用add来添加单个元素", "如果需要添加多个可以使用update"], [`s = {1, 2, 3}
+s.add(4)          # {1, 2, 3, 4} `, `s = {1, 2, 3}
 s.update([5, 6, 7])# {1, 2, 3, 4, 5, 6, 7}
 s = {1, 2, 3}
 s.update({8, 9}, [10])#{1, 2, 3, 8, 9, 10}  `]),
-    buildViewBlocks("删除（delete）",["remove()：删除指定元素，不存在则报错KeyError"," discard()：删除指定元素，不存在也不报错","pop()：随机删除并返回一个元素","clear()：清空集合","del：删除整个集合"],
-    [`s.remove(3)      # {1, 2, 4, 5}
-# s.remove(10)   # KeyError: 10`,`s.discard(4)     # {1, 2, 5}
-s.discard(10)    # 不会报错`,`removed = s.pop()  # 返回被删除的元素`,`s.clear()          # set()`,`del s #无法访问这个变量,因为它已经del销毁`]),
-buildViewBlocks("集合运算",
-    ["并集", "交集", "差集", "对称差集", "子集判断", "超集判断", "是否不相交", "原地修改"],
-    [
-        `A = {1, 2, 3}
+      buildViewBlocks("删除（delete）", ["remove()：删除指定元素，不存在则报错KeyError", " discard()：删除指定元素，不存在也不报错", "pop()：随机删除并返回一个元素", "clear()：清空集合", "del：删除整个集合"],
+        [`s.remove(3)      # {1, 2, 4, 5}
+# s.remove(10)   # KeyError: 10`, `s.discard(4)     # {1, 2, 5}
+s.discard(10)    # 不会报错`, `removed = s.pop()  # 返回被删除的元素`, `s.clear()          # set()`, `del s #无法访问这个变量,因为它已经del销毁`]),
+      buildViewBlocks("集合运算",
+        ["并集", "交集", "差集", "对称差集", "子集判断", "超集判断", "是否不相交", "原地修改"],
+        [
+          `A = {1, 2, 3}
 B = {3, 4, 5}
 print(A | B)           # 运算符
 print(A.union(B))      # 方法调用
 # 输出：{1, 2, 3, 4, 5}`,
 
-        `A = {1, 2, 3}
+          `A = {1, 2, 3}
 B = {3, 4, 5}
 print(A & B)                # 运算符
 print(A.intersection(B))    # 方法调用
 # 输出：{3}`,
 
-        `A = {1, 2, 3}
+          `A = {1, 2, 3}
 B = {3, 4, 5}
 print(A - B)           # A中有B中没有的
 print(A.difference(B))
@@ -285,13 +285,13 @@ print(A.difference(B))
 print(B - A)           # B中有A中没有的
 # 输出：{4, 5}`,
 
-        `A = {1, 2, 3}
+          `A = {1, 2, 3}
 B = {3, 4, 5}
 print(A ^ B)                    # 运算符
 print(A.symmetric_difference(B)) # 方法调用
 # 输出：{1, 2, 4, 5}`,
 
-        `A = {1, 2, 3}
+          `A = {1, 2, 3}
 B = {1, 2, 3, 4, 5}
 C = {1, 2, 3}
 
@@ -300,21 +300,21 @@ print(A <= B)          # True (运算符)
 print(C.issubset(A))   # True
 print(A < C)           # False (真子集)`,
 
-        `A = {1, 2, 3, 4, 5}
+          `A = {1, 2, 3, 4, 5}
 B = {1, 2, 3}
 
 print(A.issuperset(B))  # True
 print(A >= B)           # True (运算符)
 print(A > B)            # True (真超集)`,
 
-        `A = {1, 2, 3}
+          `A = {1, 2, 3}
 B = {3, 4, 5}
 C = {4, 5, 6}
 
 print(A.isdisjoint(B))  # False (有共同元素3)
 print(A.isdisjoint(C))  # True (无共同元素)`,
 
-        `# 原地修改（会改变原集合）
+          `# 原地修改（会改变原集合）
 A = {1, 2, 3}
 B = {3, 4, 5}
 
@@ -323,32 +323,32 @@ A.intersection_update(B)  # 交集
 A.difference_update(B)    # 差集
 A.symmetric_difference_update(B)  # 对称差集
 # 或使用：|= , &= , -= , ^=`
-    ]
-)
-  ],
-  string: [
-    buildViewBlocks("创建（create）",
+        ]
+      )
+    ],
+    string: [
+      buildViewBlocks("创建（create）",
         ["字符串可以使用单引号、双引号、三引号创建"],
         [`s1 = 'hello'         # 单引号
 s2 = "world"         # 双引号
 s3 = '''多行
 字符串'''            # 三引号
 s4 = str(123)        # 类型转换：'123'`]
-    ),
+      ),
 
-    buildViewBlocks("读取（read）",
+      buildViewBlocks("读取（read）",
         ["字符串支持索引访问和切片"],
         [`s = "Hello World"
 print(s[0])          # H (索引访问)
 print(s[-1])         # d (负索引)
 print(s[0:5])        # Hello (切片)
 print(s[::2])        # HloWrd (步长)`,
-        `# 字符串遍历
+          `# 字符串遍历
 for char in s:
     print(char)      # 逐个字符输出`]
-    ),
+      ),
 
-    buildViewBlocks("修改（update）",
+      buildViewBlocks("修改（update）",
         ["<p class='rem1'>字符串是不可变类型！所有修改都是创建新字符串，原字符串不变</p>"],
         [`s = "hello"
 s2 = s.upper()       # "HELLO" (原s不变)
@@ -357,9 +357,9 @@ s4 = s + " world"    # "hello world"
 s5 = s * 3           # "hellohellohello"
 # 注意：不能 s[0] = 'H' (会报错！)`],
         "update"
-    ),
+      ),
 
-    buildViewBlocks("删除（delete）",
+      buildViewBlocks("删除（delete）",
         ["字符串元素不能单独删除，但可以删除整个字符串变量"],
         [`s = "Hello World"
 # 不能删除单个字符
@@ -368,12 +368,12 @@ s5 = s * 3           # "hellohellohello"
 del s  # 删除整个字符串变量
 # print(s)  # NameError: name 's' is not defined`],
         "delete"
-    ),
+      ),
 
-    buildViewBlocks("字符串方法",
+      buildViewBlocks("字符串方法",
         ["大小写转换", "检查大小写", "查找", "替换", "检查开头/结尾", "分割", "连接", "去除空白"],
         [
-            `# 大小写转换
+          `# 大小写转换
 text = "hello World"
 print(text.upper())        # HELLO WORLD (全大写)
 print(text.lower())        # hello world (全小写)
@@ -381,7 +381,7 @@ print(text.capitalize())   # Hello world (首字母大写)
 print(text.title())        # Hello World (每个单词首字母大写)
 print(text.swapcase())     # HELLO wORLD (大小写互换)`,
 
-            `# 检查大小写
+          `# 检查大小写
 print("HELLO".isupper())   # True
 print("hello".islower())   # True
 print("Hello World".istitle())  # True
@@ -389,7 +389,7 @@ print("123".isdigit())     # True (是否全数字)
 print("abc".isalpha())     # True (是否全字母)
 print("abc123".isalnum())  # True (是否字母数字)`,
 
-            `# 查找
+          `# 查找
 text = "hello world, welcome to the world of Python"
 print(text.find("world"))     # 6 (返回索引，找不到返回-1)
 print(text.index("world"))    # 6 (返回索引，找不到报错)
@@ -397,18 +397,18 @@ print(text.rfind("world"))    # 21 (从右边开始找)
 print(text.count("world"))    # 2 (出现次数)
 print("world" in text)        # True (成员运算符)`,
 
-            `# 替换
+          `# 替换
 text = "hello world, welcome to the world of Python"
 print(text.replace("world", "Earth"))  # hello Earth, welcome to the Earth of Python
 print(text.replace("world", "Earth", 1))  # 只替换第一个`,
 
-            `# 检查开头和结尾
+          `# 检查开头和结尾
 text = "hello world, welcome to the world of Python"
 print(text.startswith("hello"))  # True
 print(text.endswith("Python"))   # True
 print(text.startswith("world", 6))  # 从索引6开始检查`,
 
-            `# 分割（split）
+          `# 分割（split）
 word = "a b c d e f g"
 print(word.split())       # ['a', 'b', 'c', 'd', 'e', 'f', 'g'] (默认空格)
 text = "a,b,c,d,e"
@@ -417,13 +417,13 @@ print(text.split(',', 2)) # ['a', 'b', 'c,d,e'] (限制分割次数)
 # 分割成三部分
 print("a:b:c".split(':', 1))  # ['a', 'b:c']`,
 
-            `# 连接（join）
+          `# 连接（join）
 words = ['Hello', 'World', 'Python']
 print(' '.join(words))    # Hello World Python
 print('-'.join(words))    # Hello-World-Python
 print(''.join(words))     # HelloWorldPython`,
 
-            `# 去除空白
+          `# 去除空白
 text = "  hello world  "
 print(text.strip())       # "hello world" (去除两端)
 print(text.lstrip())      # "hello world  " (去除左端)
@@ -431,25 +431,217 @@ print(text.rstrip())      # "  hello world" (去除右端)
 text2 = "---hello---"
 print(text2.strip('-'))   # "hello" (去除指定字符)`
         ]
-    ),
+      ),
 
-    buildViewBlocks("字符串格式化",
-        ["三种格式化方式：%格式化、format()、f-string","1. % 格式化（旧式）",'2. format() 方法（推荐）',"3. f-string（Python 3.6+，最推荐）"],
+      buildViewBlocks("字符串格式化",
+        ["三种格式化方式：%格式化、format()、f-string", "1. % 格式化（旧式）", '2. format() 方法（推荐）', "3. f-string（Python 3.6+，最推荐）"],
         [null,
-`name = "Alice"
+          `name = "Alice"
 age = 25
 print("My name is %s, I'm %d years old" % (name, age))
 # My name is Alice, I'm 25 years old`,
-`print("My name is {}, I'm {} years old".format(name, age))
+          `print("My name is {}, I'm {} years old".format(name, age))
 print("My name is {1}, I'm {0} years old".format(age, name))
 print("My name is {name}, I'm {age} years old".format(name=name, age=age))`,
-            `print(f"My name is {name}, I'm {age} years old")
+          `print(f"My name is {name}, I'm {age} years old")
 print(f"我叫{name}，今年{age}岁")
 print(f"3 + 5 = {3 + 5}")  # 可以执行表达式
 print(f"{name.upper()}")   # ALICE (可以调用方法)`
         ]
-    )
-]
+      )
+    ],
+    tuple: [
+      buildViewBlocks("创建（create）",
+        ["元组使用小括号创建，元素用逗号分隔"],
+        [`t1 = (1, 2, 3)           # 整数元组
+t2 = ('a', 'b', 'c')     # 字符串元组
+t3 = (1, 'a', 3.14)      # 混合类型
+t4 = (1,)                # 单元素元组（必须加逗号）
+t5 = tuple([1, 2, 3])    # 从列表转换
+print(type(t1))          # <class 'tuple'>`]
+      ),
+
+      buildViewBlocks("读取（read）",
+        ["元组支持索引访问和切片，与字符串类似"],
+        [`t = (10, 20, 30, 40, 50)
+print(t[0])            # 10 (索引)
+print(t[-1])           # 50 (负索引)
+print(t[1:4])          # (20, 30, 40) (切片)
+print(t[::2])          # (10, 30, 50) (步长)
+
+# 遍历元组
+for item in t:
+    print(item)        # 逐个输出`]
+      ),
+
+      buildViewBlocks("修改（update）",
+        ["<p class='rem1'>元组是不可变类型！不能修改元素，但若元素是可变类型，则该可变元素内部可修改</p>"],
+        [`# 元组本身不可变
+t = (1, 2, 3)
+# t[0] = 100   # 报错：TypeError
+
+# 但如果元素是可变类型（如列表），则可修改该元素内部
+t2 = ([1, 2, 3, 4], 1)
+t2[0][0] = 500
+print(t2)            # ([500, 2, 3, 4], 1)
+
+# 拼接生成新元组
+t3 = (1, 2) + (3, 4)  # (1, 2, 3, 4)
+t4 = (1, 2) * 3       # (1, 2, 1, 2, 1, 2)`],
+        "update"
+      ),
+
+      buildViewBlocks("删除（delete）",
+        ["元组元素不能单独删除，但可以删除整个元组变量"],
+        [`t = (1, 2, 3)
+# del t[0]   # 报错：TypeError
+
+del t        # 删除整个元组
+# print(t)   # NameError: name 't' is not defined`],
+        "delete"
+      ),
+
+      buildViewBlocks("元组常用操作",
+        ["长度、最大值、最小值、成员判断、解包", "这里提出的解包可以理解为一种快速绑定变量,你可以在这其中使用元组,列表,来进行快速赋值,甚至也可以用a,b=b,a来快速交换"],
+        [`t = (5, 2, 8, 1, 9)
+print(len(t))          # 5 (长度)
+print(max(t))          # 9 (最大值)
+print(min(t))          # 1 (最小值)
+print(2 in t)          # True (成员判断)
+print(10 not in t)     # True
+
+# 解包（unpacking）
+a, b, c = (1, 2, 3)    # a=1, b=2, c=3
+print(a, b, c)
+
+# 与 enumerate 配合
+for i, val in enumerate(t):
+    print(f"索引{i}: {val}")`]
+      ),],
+    int: [buildViewBlocks("创建（create）",
+      ["整数直接赋值即可创建，也可以用 int() 转换"],
+      [`a = 10
+b = -5
+c = 0
+d = int("123")   # 字符串转整数：123
+e = int(3.14)    # 浮点转整数：3（截断）
+print(type(a))   # <class 'int'>`]
+    ),
+
+    buildViewBlocks("运算（operation）",
+      ["整数支持加减乘除、取模、整除、乘方等运算"],
+      [`a, b = 5, 2
+print(a + b)    # 7  (加)
+print(a - b)    # 3  (减)
+print(a * b)    # 10 (乘)
+print(a / b)    # 2.5 (除，结果为浮点数)
+print(a % b)    # 1  (取模/余数)
+print(a // b)   # 2  (整除，向下取整)
+print(a ** b)   # 25 (乘方，5的2次方)
+
+# 注意：不能直接用 ** 模拟开方（会有精度问题）
+# 建议使用 math.sqrt() 或 pow()
+import math
+print(math.sqrt(4))   # 2.0 (精确开方)`]
+    ),
+
+    buildViewBlocks("进制转换",
+      ["整数可以表示为二进制、八进制、十六进制"],
+      [`# 不同进制表示
+print(0b1010)    # 10 (二进制)
+print(0o12)      # 10 (八进制)
+print(0xA)       # 10 (十六进制)
+
+# 转换为字符串
+print(bin(10))   # 0b1010
+print(oct(10))   # 0o12
+print(hex(10))   # 0xa`]
+    )],
+    float: [buildViewBlocks("创建（create）",
+      ["浮点数包含小数点，也可以用科学计数法"],
+      [`f1 = 3.14
+f2 = -0.5
+f3 = 1.2e3    # 1200.0 (科学计数法)
+f4 = float("3.14")  # 3.14
+f5 = float(5)       # 5.0 (整数转浮点)
+print(type(f1))     # <class 'float'>`]
+    ),
+
+    buildViewBlocks("运算（operation）",
+      ["浮点数支持与整数相同的运算，但需注意精度问题"],
+      [`a, b = 5.0, 2.0
+print(a + b)    # 7.0
+print(a - b)    # 3.0
+print(a * b)    # 10.0
+print(a / b)    # 2.5
+print(a % b)    # 1.0
+print(a // b)   # 2.0
+print(a ** b)   # 25.0
+
+# ⚠️ 精度问题
+print(0.1 + 0.2)        # 0.30000000000000004 (不精确)
+print(round(0.1 + 0.2, 1))  # 0.3 (使用 round 四舍五入)
+
+# 使用 decimal 模块解决精度问题
+from decimal import Decimal
+print(Decimal('0.1') + Decimal('0.2'))  # 0.3`]
+    ),
+
+    buildViewBlocks("特殊值",
+      ["浮点数有特殊的无穷大和 NaN"],
+      [`print(float('inf'))   # inf (正无穷)
+print(float('-inf'))  # -inf (负无穷)
+print(float('nan'))   # nan (Not a Number)
+
+import math
+print(math.isinf(float('inf')))   # True
+print(math.isnan(float('nan')))   # True`]
+    ),],
+    complex: [buildViewBlocks("创建（create）",
+      ["复数由实部和虚部组成，使用 j 表示虚部"],
+      [`c1 = 3 + 4j
+c2 = complex(2, 3)    # 2 + 3j
+c3 = complex(5)       # 5 + 0j
+c4 = complex("1+2j")  # 1 + 2j
+print(type(c1))       # <class 'complex'>
+print(c1.real)        # 3.0 (实部)
+print(c1.imag)        # 4.0 (虚部)`]
+    ),
+
+    buildViewBlocks("运算（operation）",
+      ["复数支持加减乘除等运算"],
+      [`a = 1 + 2j
+b = 3 + 4j
+print(a + b)    # (4+6j)
+print(a - b)    # (-2-2j)
+print(a * b)    # (-5+10j)   (1*3 - 2*4 + (1*4+2*3)j)
+print(a / b)    # (0.44+0.08j)
+print(a.conjugate())  # (1-2j) (共轭复数)
+print(abs(a))   # 2.236... (模长，即 sqrt(1^2 + 2^2))`]
+    ),],
+    boolean: [
+      buildViewBlocks("应用场景",
+        ["布尔类型常用于条件判断和循环控制"],
+        [`# 示例：输出100以内的素数
+for i in range(2, 101):
+    flag = True
+    for j in range(2, int(i ** 0.5) + 1):
+        if i % j == 0:
+            flag = False
+            break
+    if flag:
+        print(i, end=' ')   # 输出所有素数
+
+# 也可以直接在 if 中使用表达式
+age = 18
+if age >= 18:
+    print("成年人")
+else:
+    print("未成年人")`]
+      )
+    ],
+    typeConversion:[],
+    operation:[]
   },
   javascript: {
     array: [],
