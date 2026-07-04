@@ -1,5 +1,0 @@
-<template>
-  <appSider>
-    
-  </appSider>
-</template>

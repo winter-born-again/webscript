@@ -19,29 +19,9 @@ const router = createRouter({
           component: () => import('@/views/Python/varPage.vue'),
         },
         {
-          path: 'list',
-          name: 'list',
-          component: () => import('@/views/Python/dataType/listType.vue'),
-        },{
-          path: 'dict',
-          name: 'dict',
-          component: () => import('@/views/Python/dataType/dictType.vue'),
-        },{
-          path: 'set',
-          name: 'set',
-          component: () => import('@/views/Python/dataType/setType.vue'),
-        },{
-          path: 'str',
-          name: 'str',
-          component: () => import('@/views/Python/dataType/strType.vue'),
-        },{
-          path: 'another',
-          name: 'another',
-          component: () => import('@/views/Python/dataType/anotherType.vue'),
-        },{
-          path: 'typeConvresion',
-          name: 'typeConvresion',
-          component: () => import("@/views/Python/dataType/typeConversion.vue"),
+          path: "dataType",
+          name: "dataType",
+          component: () => import("@/views/Python/dataType.vue")
         },
         {
           path: 'process_control',
@@ -59,7 +39,7 @@ const router = createRouter({
       path: "/Javascript",
       name: "Javascript",
       component: () => import("@/views/JavaScript/JavaScriptPage.vue")
-    },{
+    }, {
       path: "/Csharp",
       name: "Csharp",
       component: () => import("@/views/Csharp/CsharpPage.vue")
@@ -69,9 +49,10 @@ const router = createRouter({
       name: 'algorithmPage',
       component: () => import('@/views/algorithmPage.vue'),
     },
-    {path:"/thinkStudy",
-      name:"thinkStudy",
-      component:()=>import("@/views/thinkStudy.vue")
+    {
+      path: "/thinkStudy",
+      name: "thinkStudy",
+      component: () => import("@/views/thinkStudy.vue")
     },
     {
       path: '/text',

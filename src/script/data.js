@@ -518,7 +518,8 @@ print(a, b, c)
 for i, val in enumerate(t):
     print(f"索引{i}: {val}")`]
       ),],
-    int: [buildViewBlocks("创建（create）",
+    int: [
+      buildViewBlocks("创建（create）",
       ["整数直接赋值即可创建，也可以用 int() 转换"],
       [`a = 10
 b = -5
@@ -557,7 +558,8 @@ print(bin(10))   # 0b1010
 print(oct(10))   # 0o12
 print(hex(10))   # 0xa`]
     )],
-    float: [buildViewBlocks("创建（create）",
+    float: [
+      buildViewBlocks("创建（create）",
       ["浮点数包含小数点，也可以用科学计数法"],
       [`f1 = 3.14
 f2 = -0.5
@@ -597,7 +599,8 @@ import math
 print(math.isinf(float('inf')))   # True
 print(math.isnan(float('nan')))   # True`]
     ),],
-    complex: [buildViewBlocks("创建（create）",
+    complex: [
+      buildViewBlocks("创建（create）",
       ["复数由实部和虚部组成，使用 j 表示虚部"],
       [`c1 = 3 + 4j
 c2 = complex(2, 3)    # 2 + 3j
@@ -640,8 +643,287 @@ else:
     print("未成年人")`]
       )
     ],
-    typeConversion:[],
-    operation:[]
+    dataProcess: [
+      buildViewBlocks("算术运算符",
+        ["Python支持7种算术运算符", "由于前文已经讨论过，这个会讲解其简写形式",
+          "加法 (+)", "减法 (-)", "乘法 (*)", " 除法 (/)", "求模/取余 (%)", "整除 (//)", "幂运算 (**)", "运算符优先级：** > * > / > // > %"],
+        [null, null,
+          `a = 10
+a += 2          # 等价于 a = a + 2
+print(a)        # 12`,
+          `a = 10
+a -= 1          # 等价于 a = a - 1
+print(a)        # 9`,
+
+          `a = 10
+a *= 2          # 等价于 a = a * 2
+print(a)        # 20`,
+
+          `a = 10
+a /= 2          # 等价于 a = a / 2
+print(a)        # 10.0 (结果总是浮点数)`,
+
+          `a = 10
+a %= 4          # 等价于 a = a % 4
+print(a)        # 2
+
+# 负数取余（Python向下取整）
+print(10 % -3)  # -2 (10 / -3 = -3.33, 向下取整 -4, 余数 = 10 - (-3)*(-4) = -2)
+print(-10 % 3)  # 2 (-10 / 3 = -3.33, 向下取整 -4, 余数 = -10 - 3*(-4) = 2)`,
+
+          `a = 10
+a //= 3         # 等价于 a = a // 3
+print(a)        # 3
+
+# 负数的整除（向下取整）
+print(10 // -3) # -4 (不是 -3！)`,
+
+          `a = 10
+a **= 2         # 等价于 a = a ** 2
+print(a)        # 100
+
+print(2 ** 3)   # 8 (2的3次方)
+print(9 ** 0.5) # 3.0 (开平方)`
+        ]
+      ),
+      buildViewBlocks("位运算符",
+        ["<h3>什么位运算？</h3>",
+          "按位与 (&) - 对应位都为1则1", "按位或 (|) - 对应位有一个为1则1",
+          "按位异或 (^) - 对应位相同则0，不同则1", "按位取反 (~) - 0变1，1变0（补码形式)", "# 左移 (<<) - 向左移动n位，右侧补0", "右移 (>>) - 向右移动n位，左侧补符号位"],
+        [null, 
+          `a, b = 60, 13        # a=0011 1100, b=0000 1101
+result = a & b       # 0000 1100 = 12
+print(f"{a} & {b} = {result}")  # 60 & 13 = 12`,
+          `a, b = 60, 13        # a=0011 1100, b=0000 1101
+result = a | b       # 0011 1101 = 61
+print(f"{a} | {b} = {result}")  # 60 | 13 = 61`,
+          `a, b = 60, 13        # a=0011 1100, b=0000 1101
+result = a ^ b       # 0011 0001 = 49
+print(f"{a} ^ {b} = {result}")  # 60 ^ 13 = 49`,
+          `a = 60               # 0011 1100
+result = ~a          # 补码表示：-61
+print(f"~{a} = {result}")  # ~60 = -61`,
+          `a = 60               # 0011 1100
+result = a << 2      # 1111 0000 = 240 (相当于乘以2^n)
+print(f"{a} << 2 = {result}")  # 60 << 2 = 240`,
+          `a = 60               # 0011 1100
+result = a >> 2      # 0000 1111 = 15 (相当于整除2^n)
+print(f"{a} >> 2 = {result}")  # 60 >> 2 = 15`
+        ]
+      ),
+      buildViewBlocks("关系运算符",
+        ["用于比较两个值，返回布尔值（True/False）", "大于 (>)", "小于 (<)",
+          "大于等于 (>=)", "小于等于 (<=)", "等于 (==) - 比较值是否相等", "不等于 (!=)"],
+        [null,
+          `print(5 > 3)         # True
+print(5 > 5)         # False`,
+          `print(5 < 3)         # False
+print(5 < 5)         # False`,
+          `print(5 >= 5)        # True
+print(5 >= 3)        # True`,
+          `print(5 <= 5)        # True
+print(5 <= 3)        # False`,
+          `print(5 == 5)        # True
+print(5 == 3)        # False`,
+          `print(5 != 3)        # True
+print(5 != 5)        # False`
+        ]
+      ),
+      buildViewBlocks("身份运算符",
+        ["比较两个对象的内存地址是否相同", "使用 is / is not"],
+        [null,
+          `a = [1, 2, 3]
+b = [1, 2, 3]
+c = a
+
+print(a is c)        # True (指向同一内存)
+print(a is b)        # False (不同对象，不同内存)
+print(a == b)        # True (值相同)
+
+print(id(a))         # 内存地址 (如 2157562930816)
+print(id(b))         # 不同地址
+print(id(c))         # 与a相同`
+        ]
+      ),
+      buildViewBlocks("成员运算符",
+        ["判断元素是否在序列（字符串、列表、元组等）中", "使用 in / not in"],
+        [null,
+          `# 列表成员判断
+print(2 in [1, 3, 4, 5])      # False
+print(2 in [1, 2, 3, 4, 5])   # True
+print(2 not in [1, 3, 4, 5])  # True
+
+# 字符串成员判断
+print('e' in 'hello')         # True
+print('a' not in 'hello')     # True
+
+# 字典成员判断（检查键）
+print('name' in {'name': 'Alice', 'age': 25})  # True`
+        ]
+      ),
+      buildViewBlocks("逻辑运算符",
+        ["and（与）：全真则真", "or（或）：有真则真", "not（非）：真返假，假返真", "短路求值：返回实际操作的值"],
+        [
+          `# and（与）：两边都为 True 才返回 True
+print(True and True)    # True
+print(True and False)   # False
+print(False and False)  # False
+
+# 数字运算示例
+print(3 and 5)          # 5 (两边都为真，返回最后一个)
+print(0 and 5)          # 0 (假则返回假)
+print(3 and 0)          # 0 (遇到假返回0)`,
+
+          `# or（或）：只要一边为 True 就返回 True
+print(True or False)    # True
+print(False or True)    # True
+print(False or False)   # False
+
+# 数字运算示例
+print(3 or 5)           # 3 (遇到真就返回，不再往后)
+print(0 or 5)           # 5 (假则继续，返回最后一个)
+print(0 or 0 or 5)      # 5 (连续假，返回最后一个真)
+print(0 or 0 or 0)      # 0 (全假，返回最后一个)`,
+
+          `# not（非）：取反
+print(not True)         # False
+print(not False)        # True
+print(not 0)            # True (0 被转为 False)
+print(not 3)            # False (3 被转为 True)
+print(not [])           # True (空列表为 False)
+print(not [1, 2])       # False (非空列表为 True)`,
+
+          `# 布尔转换规则总结
+# bool(非空) = True，bool(空) = False
+print(bool([]))         # False (空列表)
+print(bool([1, 2]))     # True (非空列表)
+print(bool(0))          # False (数字0)
+print(bool(3))          # True (非零数字)
+print(bool(""))         # False (空字符串)
+print(bool("abc"))      # True (非空字符串)
+
+# bool 是 int 的子类
+print(True == 1)        # True
+print(False == 0)       # True`
+        ]
+      ),
+      buildViewBlocks("赋值运算符",
+        ["将右边表达式的值赋给左边变量", "复合赋值运算符简化代码"],
+        [null,
+          `# 基本赋值
+x = 10
+print(x)             # 10
+
+# 链式赋值
+a = b = c = 10
+print(a, b, c)       # 10 10 10
+
+# 增量赋值（复合赋值）
+x = 10
+x += 5               # x = x + 5 → 15
+x -= 3               # x = x - 3 → 12
+x *= 2               # x = x * 2 → 24
+x /= 4               # x = x / 4 → 6.0
+x %= 3               # x = x % 3 → 0.0
+x = 10
+x //= 3              # x = x // 3 → 3
+x **= 2              # x = x ** 2 → 9
+
+print(x)             # 9`
+        ]
+      ),
+      buildViewBlocks("数据类型转换",
+        ["Python 内置类型之间的相互转换", "转整数 int()", " 转浮点数 float()",
+          "转字符串 str()", "转布尔 bool()", "转列表 list()", "转元组 tuple()",
+          "# 转集合 set()", "转字典 dict()", "进制转换", "转换事例"],
+        [null,
+          `print(int(3.14))        # 3 (浮点转整数，截断)
+print(int("123"))       # 123 (字符串转整数)
+print(int(True))        # 1 (布尔转整数)
+print(int(False))       # 0
+print(int("0b1010", 2)) # 10 (二进制字符串转整数)
+print(int("0o12", 8))   # 10 (八进制字符串转整数)
+print(int("0xA", 16))   # 10 (十六进制字符串转整数)`,
+          `print(float(10))        # 10.0 (整数转浮点)
+print(float("3.14"))    # 3.14 (字符串转浮点)
+print(float(True))      # 1.0 (布尔转浮点)
+print(float("inf"))     # inf (无穷大)
+print(float("NaN"))     # nan (非数字)`,
+          `print(str(123))         # "123" (整数转字符串)
+print(str(3.14))        # "3.14" (浮点转字符串)
+print(str(True))        # "True" (布尔转字符串)
+print(str([1, 2, 3]))   # "[1, 2, 3]" (列表转字符串)
+print(str({'a': 1}))    # "{'a': 1}" (字典转字符串)
+print(str(None))        # "None"`,
+          `print(bool(1))          # True (非零整数)
+print(bool(0))          # False (零)
+print(bool(3.14))       # True (非零浮点)
+print(bool(0.0))        # False (零)
+print(bool("hello"))    # True (非空字符串)
+print(bool(""))         # False (空字符串)
+print(bool([1, 2]))     # True (非空列表)
+print(bool([]))         # False (空列表)
+print(bool({}))         # False (空字典)
+print(bool(None))       # False`,
+          `print(list("hello"))           # ['h', 'e', 'l', 'l', 'o'] (字符串转列表)
+print(list((1, 2, 3)))         # [1, 2, 3] (元组转列表)
+print(list({1, 2, 3}))         # [1, 2, 3] (集合转列表)
+print(list({'a': 1, 'b': 2}))  # ['a', 'b'] (字典转列表，取键)
+print(list(range(5)))          # [0, 1, 2, 3, 4] (range转列表)`,
+          `print(tuple([1, 2, 3]))        # (1, 2, 3) (列表转元组)
+print(tuple("hello"))          # ('h', 'e', 'l', 'l', 'o') (字符串转元组)
+print(tuple({1, 2, 3}))        # (1, 2, 3) (集合转元组)
+print(tuple({'a': 1, 'b': 2})) # ('a', 'b') (字典转元组，取键)`,
+          `print(set([1, 2, 2, 3]))       # {1, 2, 3} (列表转集合，去重)
+print(set("hello"))            # {'e', 'h', 'l', 'o'} (字符串转集合，去重)
+print(set((1, 2, 2, 3)))       # {1, 2, 3} (元组转集合，去重)
+print(set({'a': 1, 'b': 2}))   # {'a', 'b'} (字典转集合，取键)`,
+
+          `# 从键值对列表创建
+print(dict([('a', 1), ('b', 2)]))  # {'a': 1, 'b': 2}
+
+# 从键值对元组创建
+print(dict((('a', 1), ('b', 2))))  # {'a': 1, 'b': 2}
+
+# 从键值对集合创建
+print(dict({('a', 1), ('b', 2)}))  # {'a': 1, 'b': 2}
+
+# 使用 zip 从两个列表创建
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+print(dict(zip(keys, values)))     # {'a': 1, 'b': 2, 'c': 3}
+
+# 从字典创建字典（复制）
+print(dict({'a': 1, 'b': 2}))      # {'a': 1, 'b': 2}`,
+
+          `print(bin(10))          # '0b1010' (十进制转二进制)
+print(oct(10))          # '0o12' (十进制转八进制)
+print(hex(10))          # '0xa' (十进制转十六进制)
+print(int('0b1010', 2)) # 10 (二进制字符串转十进制)
+print(int('0o12', 8))   # 10 (八进制字符串转十进制)
+print(int('0xa', 16))   # 10 (十六进制字符串转十进制)`,
+
+          `# 列表去重
+lst = [1, 2, 2, 3, 3, 3]
+unique = list(set(lst))    # [1, 2, 3]
+
+# 字符串转列表（按字符分割）
+print(list("hello"))       # ['h', 'e', 'l', 'l', 'o']
+
+# 字符串转列表（按分隔符）
+print("a,b,c".split(','))  # ['a', 'b', 'c']
+
+# 列表转字符串
+print(''.join(['a', 'b', 'c']))  # 'abc'
+print('-'.join(['a', 'b', 'c'])) # 'a-b-c'
+
+# 转换判断
+print(isinstance(3, int))  # True (判断类型)
+print(type(3.14) is float) # True`
+        ]
+      )
+    ],
+
   },
   javascript: {
     array: [],
