@@ -3,21 +3,12 @@
     <div v-for="(value, idex) in h2title">
       <h2 class="st">{{ value }}</h2>
       <h3 class="kt rem1">{{ h3title[idex] }}</h3>
-      <div
-        style="margin-bottom: 50px"
-        class="kt"
-        v-for="(value, index) in result[idex]"
-        :key="index"
-      >
+      <div style="margin-bottom: 50px" class="kt" v-for="(value, index) in result[idex]" :key="index">
         <h3 class="normal" align="center">
           <component :is="value.title"></component>
         </h3>
 
-        <div
-          style="padding-left: 10px"
-          v-for="item in Array(value.section.length).keys()"
-          :key="item"
-        >
+        <div style="padding-left: 10px" v-for="item in Array(value.section.length).keys()" :key="item">
           <h4 class="normal" v-html="value.section[item]"></h4>
           <component :is="value.content[item]"></component>
         </div>
