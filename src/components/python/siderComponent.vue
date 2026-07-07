@@ -64,7 +64,7 @@
             </el-icon>
             <span>算法</span>
           </template>
-          <el-menu-item>基础算法</el-menu-item>
+          <el-menu-item index="6-1">基础算法</el-menu-item>
         </el-sub-menu>
       </el-menu>
     </el-col>

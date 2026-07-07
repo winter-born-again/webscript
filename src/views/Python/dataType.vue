@@ -49,7 +49,65 @@
         <h4 class="rem1 normal">
           我们不妨来对比一下十进制，十进制是一个<b>数位</b>上的数<b>大于九</b>就<b>进位</b>(多出一位)
         </h4>
-
+        <div class="bitGraph" @click="baseArithmetic()">
+          <div class="button">
+            <el-input v-model="inputNumber" placeholder="输入数字双击=>赋值"></el-input>
+            <el-button type="info" @click="add()">+1</el-button>
+            <el-button type="info" @click="sub()">-1</el-button>
+            <el-select v-model="radix_value" placeholder="选择进制">
+              <el-option
+                v-for="item in optionsnumber"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </div>
+          <div class="virtual">
+            <div ref="numberPositionRef">{{ numberBit }}</div>
+            <div :class="{ fade: isFade }" :key="twice" @animationend="isFade = false">
+              {{ changeValue > 0 ? '+1' : '-1' }}
+            </div>
+          </div>
+          <div @click="baseArithmetic" @dblclick="assign">=></div>
+          <div class="reality">
+            <div>
+              <p>{{ radix_value }}进制为</p>
+              <p>{{ radix_bit }}</p>
+            </div>
+            <div>
+              <p>表示数量</p>
+              <P>{{ realityPosition }}</P>
+            </div>
+          </div>
+        </div>
+        <h4 class="rem1 normal">
+          实际上是9这个一位数加上了一个1变成了两位的1和0的十进制数。那为什么我们知道这个两位十进制数是实际意义上的十呢？其实我们可以理解为：
+        </h4>
+        <div class="bitExpand">
+          <h4 align="center">10=>1*10<sup>1</sup>+0*10<sup>0</sup>=>10+0=>10</h4>
+          <div class="bitExpand_middle">
+            <template v-for="item in createBitVNode">
+              <component :is="item"></component>
+            </template>
+          </div>
+        </div>
+        <h4 class="rem1">十进制和二进制有什么关系？</h4>
+        <h4 class="rem1 normal">
+          其实二进制的逻辑也是这样：一个数位上的数大于二就进位(多出一位)。那么其实我们也可以仿照前文的分割方式(10=>1*10<sup>1</sup>+0*10<sup>0</sup>=>10+0=>10)
+          来讲一个数转换为二进制：
+        </h4>
+        <h4 class="rem1" align="center">10=>8+2=>2<sup>3</sup>+2<sup>1</sup>=>1010</h4>
+        <h4 class="rem1 normal">
+          那为什么是1010不是1100，0101，1001呢，其实我们可以通过观察十进制数(9+1=10)的过程其实可以发现，我们实际的数字十是通过
+          1*10<sup>1</sup>+0*10<sup>0</sup>得到的，恰好这个算式中的1和0正好是十进制数的第一位和第二位。这并不是巧合，我们所有的进制都遵循这个规律，即：
+        </h4>
+        <h4 class="rem1" align="center">
+          实际数字=A*进制<sup>位</sup>+B*进制<sup>位</sup>……=>AB…(n进制的数)
+        </h4>
+        <h4 class="rem1 normal">
+          其中，位就代表了这些数(A，B…)在n进制数中的位置，比如1*101+0*100中1*101其实就是就是告诉我们1这个数字在十进制数的第2位(从右往左数，因为起始位是0所以需要加1)。
+        </h4>
       </div>
     </template>
   </blockView>
@@ -84,16 +142,20 @@
 
 .bitGraph {
   width: 100%;
-  height: 300px;
+  height: 200px;
   display: grid;
   grid-template-columns: repeat(3, 33%);
   grid-template-rows: auto 2fr;
   align-items: center;
   justify-items: center;
+  color: rgb(134, 134, 134);
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #313131;
 }
 .button {
   width: 100%;
-  height: 100px;
+  height: 80px;
   grid-column: 1 / 4;
   display: flex;
   justify-content: space-around;
@@ -107,9 +169,10 @@
   color: #b1b1b1;
   background-color: transparent;
 }
+
 .button > [class^='el-'] {
   height: 30px;
-  width: 30%;
+  width: 20%;
 }
 .bitGraph > div {
   font-size: 50px;
@@ -119,10 +182,70 @@
   width: 100%;
   height: 100%;
 }
+.virtual {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+.virtual > div:nth-child(2) {
+  font-size: 30px;
+  opacity: 0;
+  height: 100%;
+  font-size: 0;
+}
+.fade {
+  animation: toggle 1s ease 0.03s forwards;
+}
+@keyframes toggle {
+  0% {
+    opacity: 0.5;
+    transform: translateY(0);
+    font-size: 0px;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px);
+    font-size: 30px;
+  }
+  100% {
+    opacity: 0; /* 最终完全消失 */
+    transform: translateY(-40px);
+    font-size: 0px;
+  }
+}
+.reality > div {
+  font-size: 20px;
+  text-align: center;
+}
+.bitExpand {
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #313131;
+  display: flex;
+  flex-direction: column;
+}
+.bitExpand_middle {
+  width: calc(100% - 20px);
+  display: grid;
+  direction: rtl;
+  grid-template-columns: repeat(20, 1fr);
+  align-items: center;
+  gap: 10px;
+  background-color: #1e1e1e;
+  padding: 10px;
+}
+.bitExpand_middle > div {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
 </style>
 <script setup>
 import { knowledgeData } from '@/script/data'
-import { computed, ref, nextTick, onMounted, reactive } from 'vue'
+import { computed, ref, nextTick, onMounted, reactive, watch, h } from 'vue'
 import { useRoute } from 'vue-router'
 import { buildViewBlocks } from '@/script/tool'
 const h2unit = {
@@ -210,4 +333,117 @@ onMounted(async () => {
     }
   }
 })
+const numberBit = ref(9)
+const inputNumber = ref()
+const isFade = ref(false)
+const twice = ref(0)
+const changeValue = ref(1)
+const rewriteKey = () => {
+  twice.value++
+}
+
+const add = () => {
+  changeValue.value = 1
+  numberBit.value++
+  rewriteKey()
+  isFade.value = true
+}
+
+const sub = () => {
+  changeValue.value = -1
+  numberBit.value--
+  rewriteKey()
+  isFade.value = true
+}
+const assign = () => {
+  numberBit.value = inputNumber.value === '' ? inputNumber.value : 0
+}
+const transformOptions = (array) => {
+  return array.map((x) => ({ value: x, label: x }))
+}
+const optionsnumber = transformOptions([...Array(35)].map((_, x) => `${x + 2}`))
+const numberZh_cn = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
+
+const radix_value = ref(10)
+const radix_bit = ref()
+const realityPosition = ref()
+const digittozh_cn = (num) => {
+  let unitZh_cn = ''
+  let reality_value = ''
+  let result = []
+  const digit = [
+    '个',
+    '十',
+    '百',
+    '千',
+    '万',
+    '十万',
+    '百万',
+    '千万',
+    '亿',
+    '十亿',
+    '百亿',
+    '千亿',
+    '万亿',
+  ]
+  for (let i of Math.abs(num).toString()) {
+    unitZh_cn += numberZh_cn[i]
+  }
+  reality_value = [...unitZh_cn].reverse()
+  for (let i in reality_value) {
+    if (reality_value[i] !== '零') {
+      result.push(digit[i], reality_value[i])
+    } else {
+      result.push(reality_value[i])
+    }
+  }
+  return result
+}
+const dtreprocessing = (numZh_cn) => {
+  return numZh_cn
+    .reverse()
+    .join('')
+    .replace(/个$/, '')
+    .replace(/^一十/, '十')
+    .replace(/(零)\1+/g, '$1')
+    .replace(/零+$/, '')
+}
+const baseArithmetic = () => {
+  const result = digittozh_cn(numberBit.value)
+  console.log(result)
+  realityPosition.value = (numberBit.value >= 0 ? '' : '负') + dtreprocessing(result)
+  radix_bit.value = numberBit.value.toString(radix_value.value)
+}
+const bitevery = (bitNow, base) => {
+  console.log(bitNow)
+  const data = Array.from(bitNow)
+    .reverse()
+    .map((value, index) => {
+      return { reality: value, virtual: [base, index] }
+    })
+  return data
+}
+const createBitVNode = computed(() => {
+  let data = bitevery(radix_bit.value, radix_value.value)
+  return data.map((x) => {
+    return h(
+      'div',
+
+      [
+        h('div', [x.virtual[0], h('sup', x.virtual[1])]),
+        h('div', x.reality),
+        h('div', `${Math.pow(x.virtual[0], x.virtual[1])}`),
+        h('div', { style: 'transform: rotate(-90deg);' }, '=>'),
+        h('div', `${Math.pow(x.virtual[0], x.virtual[1])}X${x.reality}`),
+      ],
+    )
+  })
+})
+watch(
+  [numberBit, radix_value],
+  () => {
+    baseArithmetic()
+  },
+  { immediate: true },
+)
 </script>
